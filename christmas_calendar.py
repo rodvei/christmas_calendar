@@ -62,7 +62,7 @@ def announcement(winner, day, n_sec=3):
 settings_file = 'settings.json'
 settings = get_settings(settings_file)
 
-,target_students = get_students_candidates(settings['students'], settings['winners'])
+target_students = get_students_candidates(settings['students'], settings['winners'])
 winner = random.choice(target_students)
 
 settings['winners'].append(winner)
