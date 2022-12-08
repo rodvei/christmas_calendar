@@ -23,8 +23,8 @@ def get_settings(file):
     if datetime.datetime.now().month!=12:
         raise ValueError('STOP! It is not even December!!')
     today = datetime.datetime.now().day
-#    if today<settings['day']:
-#        raise ValueError(f'STOP, you have to wait!! Today is only the {today}th, but you try to run the code for the {settings["day"]}th')
+    if today<settings['day']:
+        raise ValueError(f'STOP, you have to wait!! Today is only the {today}th, but you try to run the code for the {settings["day"]}th')
     return settings
 
 def save_settings(s, file):
@@ -62,7 +62,7 @@ def announcement(winner, day, n_sec=3):
 settings_file = 'settings.json'
 settings = get_settings(settings_file)
 
-target_students = get_students_candidates(settings['students'], settings['winners'])
+,target_students = get_students_candidates(settings['students'], settings['winners'])
 winner = random.choice(target_students)
 
 settings['winners'].append(winner)
