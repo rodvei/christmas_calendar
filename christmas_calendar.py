@@ -57,6 +57,7 @@ def announcement(winner, day, n_sec=3):
     for i in reversed(range(1,n_sec+1)):
         print(f'{i}... ', end='', flush=True)
         time.sleep(1)
+    play_thread.join()
     print(f'{winner}!!!', flush=True)
 
 settings_file = 'settings.json'
@@ -68,5 +69,5 @@ winner = random.choice(target_students)
 settings['winners'].append(winner)
 settings['day'] += 1
 
-announcement(winner, settings['day'])
+announcement(winner, settings['day'], n_sec=4)
 save_settings(settings, settings_file)
